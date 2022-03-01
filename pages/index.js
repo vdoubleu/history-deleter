@@ -12,7 +12,7 @@ export default function Home() {
       <main>
         <h1> History Deleter </h1>
 
-        <Link href="/test">
+        <Link href="/test-page">
           <a>Delete History</a>
         </Link>
       </main>

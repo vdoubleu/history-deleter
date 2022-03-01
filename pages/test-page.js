@@ -1,6 +1,6 @@
 export default function Test() {
   function handleButton(_e) {
-    fetch('/api/test-route')
+    fetch('/api/google-search?q=tesla')
       .then(res => res.json())
       .then(data => console.log(data))
       .catch(err => console.log(err));
