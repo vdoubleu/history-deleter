@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { GetGoogleResults } from "../../utils/routes";
 
 import NavBar from '../../components/NavBar';
+import SearchResultCard from '../../components/SearchResultCard';
 
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { CircularProgress, Container } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 
 export default function Search(props) {
@@ -38,6 +39,18 @@ export default function Search(props) {
   return (
     <div> 
       <NavBar />
+
+      <Container>
+        {searchResults.map((result, index) => (
+          <SearchResultCard 
+            key={index} 
+            result={result} 
+            URL={result.link}
+            title={result.title}
+            snippet={result.snippet}
+            />
+        ))}
+      </Container>
     </div>
   );
 }
