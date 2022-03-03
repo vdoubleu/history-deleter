@@ -14,6 +14,7 @@ yarn install
 You will also need to use the google search api. To do that, you will need an api key and a custom search engine. You can get both of these from here:  
 `https://cse.google.com/cse/all`  
 `https://developers.google.com/custom-search/v1/introduction`
+When setting up the custom search engine, I followed this answer on stack overflow: `https://stackoverflow.com/a/11206266`
 
 In the root directory of the project, create the file `.env.local` and fill it with the following content:
 ```

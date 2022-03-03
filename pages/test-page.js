@@ -1,3 +1,5 @@
+import Button from '@material-ui/core/Button';
+
 export default function Test() {
   function handleButton(_e) {
     fetch('/api/google-search?q=tesla')
@@ -9,7 +11,7 @@ export default function Test() {
   return (
     <div>
       <h1>Hello World</h1>
-      <button onClick={handleButton}> test api route </button>
+      <Button onClick={handleButton} variant="contained"> test api route </Button>
     </div>
   );
 }
