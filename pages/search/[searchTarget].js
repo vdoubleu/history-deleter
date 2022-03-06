@@ -21,7 +21,11 @@ export default function Search(props) {
     return (
       <div>
         <NavBar />
-        <CircularProgress />
+        <Container maxWidth="sm">
+          <Box display="flex" justifyContent="center" alignItems="center" sx={{mt: 5}}>
+            <CircularProgress />
+          </Box>
+        </Container>
       </div>
     );
   }
@@ -30,7 +34,7 @@ export default function Search(props) {
     return (
       <div>
         <NavBar />
-        <Box p={2}>
+        <Box sx={{mt: 5}}>
           No results found.
         </Box>
       </div>
@@ -41,15 +45,18 @@ export default function Search(props) {
       <NavBar />
 
       <Container>
-        {searchResults.map((result, index) => (
-          <SearchResultCard 
-            key={index} 
-            result={result} 
-            URL={result.link}
-            title={result.title}
-            snippet={result.snippet}
-            />
-        ))}
+        <Box sx={{mt: 5}}>
+          {searchResults.map((result, index) => (
+            <SearchResultCard 
+              key={index} 
+              result={result} 
+              URL={result.link}
+              title={result.title}
+              snippet={result.snippet}
+              type={"Google Search Result"}
+              />
+          ))}
+        </Box>
       </Container>
     </div>
   );
