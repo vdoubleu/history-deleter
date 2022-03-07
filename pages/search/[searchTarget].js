@@ -4,8 +4,7 @@ import { GetGoogleResults } from "../../utils/routes";
 import NavBar from '../../components/NavBar';
 import SearchResultCard from '../../components/SearchResultCard';
 
-import { CircularProgress, Container } from '@material-ui/core';
-import Box from '@material-ui/core/Box';
+import { Box, CircularProgress, Container } from '@mui/material';
 
 export default function Search(props) {
   const searchTarget = props.searchTarget;

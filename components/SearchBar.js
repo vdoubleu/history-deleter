@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { OutlinedInput, InputAdornment, FormControl } from '@material-ui/core';
-import Search from '@material-ui/icons/Search';
+import { OutlinedInput, InputAdornment, FormControl } from '@mui/material';
+import Search from '@mui/icons-material/Search';
 
 export default function SearchBar(props) {
   const [search, setSearch] = useState('');

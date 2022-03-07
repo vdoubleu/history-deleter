@@ -1,5 +1,5 @@
-import { AppBar, Box, Toolbar, Typography, Container, IconButton, Button } from '@material-ui/core';
-import Home from "@material-ui/icons/Home";
+import { AppBar, Box, Toolbar, Typography, Container, IconButton, Button } from '@mui/material';
+import Home from "@mui/icons-material/Home";
 
 import Link from 'next/link';
 

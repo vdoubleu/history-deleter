@@ -1,4 +1,4 @@
-import { Card, CardContent, CardActions, Button, Link, Typography } from '@material-ui/core';
+import { Card, CardContent, CardActions, Button, Link, Typography } from '@mui/material';
 
 export default function SearchResultCard(props) {
   const { URL, title, snippet, type } = props;
