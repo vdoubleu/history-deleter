@@ -1,9 +1,4 @@
-function getUrlBase(url) {
-  console.log(url);
-  const urlParts = url.split('/');
-
-  return `${urlParts[0]}//${urlParts[2]}`;
-}
+import { getUrlBase } from '../../../utils/utilFunc';
 
 const requiredScopes = ['user_posts'];
 

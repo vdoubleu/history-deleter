@@ -10,3 +10,5 @@ export async function GetGoogleResults(query, page) {
   const data = await res.json();
   return data;
 }
+
+
