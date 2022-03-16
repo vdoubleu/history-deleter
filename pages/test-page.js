@@ -14,7 +14,7 @@ export default function Test() {
     <div>
       <h1>Hello World</h1>
       <Button onClick={handleButton} variant="contained"> test api route </Button>
-      <a href="/api/fb/auth">test api route</a>
+      <a href="/api/reddit/auth">test api route</a>
     </div>
   );
 }
