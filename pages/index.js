@@ -39,14 +39,14 @@ export default function Home() {
         <Container maxWidth="md">
           <Box my={4} sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
           <Button onClick={() => setOpenSiteSelectModal(true)}> 
-            <Image src={"/images/google-logo.png"} alt="logo" width={500} height={500} /> 
+            <Image src={getImageFromSite(currSite)} alt="logo" width={200} height={200} /> 
           </Button>
             <Typography varient="h3" sx={{ m: 1 }}> Enter Keywords/Usernames that you have previously used </Typography>
             <SearchBar OnSubmit={handleSubmit} />
           </Box>
         </Container>
 
-        <SiteSelectModal open={openSiteSelectModal} handleClose={() => setOpenSiteSelectModal(false)} />
+        <SiteSelectModal open={openSiteSelectModal} handleClose={() => setOpenSiteSelectModal(false)} setSite={setCurrSite} sites={sites} />
 
 
       </main>

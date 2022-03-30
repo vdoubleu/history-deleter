@@ -1,4 +1,4 @@
-import { Modal, Box, Typography } from "@mui/material";
+import { Modal, Box, Typography, Button } from "@mui/material";
 
 const style = {
   position: 'absolute',
@@ -12,9 +12,14 @@ const style = {
   p: 4,
 };
 
-const sites = ["reddit", "twitter", "google", "pornhub", "bing"];
-
 export default function (props) {
+  const sites = props.sites;
+
+  function setSiteAndClose(site) {
+    props.handleClose();
+    props.setSite(site);
+  }
+
   return (
     <Modal
     open={props.open}
@@ -27,7 +32,9 @@ export default function (props) {
       sites.map((site, index) => {
         return (
           <Box style={{}} key={index}>
-            <Typography>{site}</Typography>
+            <Button onClick={() => setSiteAndClose(site)}> 
+              <Typography>{site}</Typography>
+            </Button>
           </Box>
         )
       })
