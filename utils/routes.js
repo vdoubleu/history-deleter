@@ -17,3 +17,10 @@ export async function GetPornHubResults(query, page) {
   const data = await res.json();
   return data;
 }
+
+export async function GetArchiveResults(query, page) {
+  const res = await fetch(`/api/archive/search?q=${query}&pageindex=${page}`);
+
+  const data = await res.json();
+  return data;
+}
