@@ -19,7 +19,7 @@ export default function Home() {
 
   function handleSubmit(searchTarget) {
     console.log(searchTarget);
-    router.push(`/search/${searchTarget}`);
+    router.push(`/search/${currSite}/${searchTarget}`);
   }
 
   function getImageFromSite(site) {

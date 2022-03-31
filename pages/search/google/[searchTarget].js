@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { GetGoogleResults } from "../../utils/routes";
+import { GetGoogleResults } from "../../../utils/routes";
 
-import NavBar from '../../components/NavBar';
-import SearchResultCard from '../../components/SearchResultCard';
+import NavBar from '../../../components/NavBar';
+import SearchResultCard from '../../../components/SearchResultCard';
 
 import { Box, CircularProgress, Container } from '@mui/material';
 

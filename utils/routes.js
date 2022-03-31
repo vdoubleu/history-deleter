@@ -11,4 +11,9 @@ export async function GetGoogleResults(query, page) {
   return data;
 }
 
+export async function GetPornHubResults(query, page) {
+  const res = await fetch(`/api/pornhub/search?q=${query}&pageindex=${page}`);
 
+  const data = await res.json();
+  return data;
+}
