@@ -7,3 +7,8 @@ export function getUrlBase(url) {
 
   return `${urlParts[0]}//${urlParts[2]}`;
 }
+
+
+export function getImageFromSite(site) {
+  return `/images/${site}-logo.png`;
+}

@@ -1,15 +1,23 @@
-import { Modal, Box, Typography, Button } from "@mui/material";
+import { getImageFromSite } from "../utils/utilFunc";
+
+import Image from "next/image";
+
+import { Modal, Box, Typography, Button, Avatar } from "@mui/material";
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  maxWidth: 600,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  justifyContent: "center"
 };
 
 export default function (props) {
@@ -32,8 +40,12 @@ export default function (props) {
       sites.map((site, index) => {
         return (
           <Box style={{}} key={index}>
-            <Button onClick={() => setSiteAndClose(site)}> 
-              <Typography>{site}</Typography>
+            <Button 
+              onClick={() => setSiteAndClose(site)} >
+                <Box>
+                  <Image src={getImageFromSite(site)} width={150} height={150} />
+                  <Typography>{site}</Typography>
+                </Box>
             </Button>
           </Box>
         )

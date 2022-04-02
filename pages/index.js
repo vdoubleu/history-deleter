@@ -6,6 +6,8 @@ import NavBar from '../components/NavBar';
 import SearchBar from '../components/SearchBar';
 import SiteSelectModal from '../components/SiteSelectModal';
 
+import { getImageFromSite } from "../utils/utilFunc";
+
 import { Container, Box, Typography, Button } from "@mui/material";
 
 import { useState } from 'react';
@@ -20,10 +22,6 @@ export default function Home() {
   function handleSubmit(searchTarget) {
     console.log(searchTarget);
     router.push(`/search/${currSite}/${searchTarget}`);
-  }
-
-  function getImageFromSite(site) {
-    return `/images/${site}-logo.png`;
   }
 
   return (
