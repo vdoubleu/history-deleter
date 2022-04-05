@@ -21,7 +21,26 @@ export default function Home() {
 
   function handleSubmit(searchTarget) {
     console.log(searchTarget);
-    router.push(`/search/${currSite}/${searchTarget}`);
+    router.push({
+      pathname: `/search/${currSite}/result`,
+      query: {
+        q: searchTarget
+      }
+    });
+  }
+
+  function onFileUpload({target}) {
+    console.log(target.files[0])
+    // upload file to anonfile and get the url
+    let formData = new FormData();
+    formData.append('file', target.files[0]);
+    fetch("/api/google/upload", {
+      method: "POST",
+      body: formData
+    }).then(res => res.json())
+    .then(res => {
+      console.log(res);
+    })
   }
 
   return (
@@ -42,6 +61,22 @@ export default function Home() {
             <Typography varient="h3" sx={{ m: 1 }}> Enter Keywords/Usernames that you have previously used </Typography>
             <SearchBar OnSubmit={handleSubmit} />
           </Box>
+      
+    {/*<Box>
+            <input
+              style={{ display: 'none' }}
+              accept="image/*"
+              id="raised-button-file"
+              multiple
+              type="file"
+              onChange={onFileUpload}
+            />
+            <label htmlFor="raised-button-file">
+              <Button variant="contained" component="span" sx={{ m: 1 }}>
+                Upload Image
+              </Button>
+            </label>
+          </Box>*/}
         </Container>
 
         <SiteSelectModal open={openSiteSelectModal} handleClose={() => setOpenSiteSelectModal(false)} setSite={setCurrSite} sites={sites} />

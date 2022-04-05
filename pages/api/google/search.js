@@ -16,8 +16,10 @@ export default async function handler(req, res) {
     });
   }
 
+  const searchType = req.query.searchtype ? `searchType=${req.query.searchtype}` : '';
+
   try {
-    const googleResRaw = await fetch(`${CSE_URL}?key=${CSE_KEY}&cx=${CSE_CX}&q=${req.query.q}&num=10&start=${startIndex}`);
+    const googleResRaw = await fetch(`${CSE_URL}?key=${CSE_KEY}&cx=${CSE_CX}&q=${req.query.q}&num=10&start=${startIndex}&${searchType}`);
     const googleResJson = await googleResRaw.json();
 
     res.setHeader('Content-Type', 'application/json');

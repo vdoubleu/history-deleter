@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import { useEffect, useState } from 'react';
 import { GetPornHubResults } from "../../../utils/routes";
 
@@ -6,8 +8,10 @@ import SearchResultCard from '../../../components/SearchResultCard';
 
 import { Box, CircularProgress, Container } from '@mui/material';
 
-export default function Search(props) {
-  const searchTarget = props.searchTarget;
+export default function Search() {
+  const router = useRouter();
+  const searchTarget = router.query.q;
+  const redirectLink = "https://www.pornhub.com/content-removal";
   const [searchResults, setSearchResults] = useState(null);
 
   useEffect(async () => {
@@ -53,20 +57,11 @@ export default function Search(props) {
               title={result.title}
               snippet={""}
               type={"Pornhub Search Result"}
+              redirect={redirectLink}
               />
           ))}
         </Box>
       </Container>
     </div>
   );
-}
-
-export async function getStaticPaths() {
-  // these are the list of paths to pre-render
-  // in our case, we aren't pre-rendering anything
-  return { paths: [], fallback: true }
-}
-
-export async function getStaticProps({ params }) {
-  return { props: { searchTarget: params.searchTarget } }
 }
