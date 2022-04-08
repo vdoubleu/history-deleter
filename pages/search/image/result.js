@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 
 import { useEffect, useState } from 'react';
-import { GetGoogleResults } from "../../../utils/routes";
+import { GetImageResults } from "../../../utils/routes";
 
 import NavBar from '../../../components/NavBar';
 import SearchResultCard from '../../../components/SearchResultCard';
@@ -18,7 +18,7 @@ export default function Search() {
   useEffect(async () => {
     if (!searchTarget) return;
     console.log(searchTarget, searchType);
-    const res = await GetGoogleResults(searchTarget, 0, searchType);
+    const res = await GetImageResults(searchTarget, 0, searchType);
     setSearchResults(res);
     console.log(res);
   }, [searchTarget, searchType]);
@@ -56,10 +56,10 @@ export default function Search() {
             <SearchResultCard 
               key={index} 
               result={result} 
-              URL={result.link}
+              URL={result.thumbnail}
               title={result.title}
               snippet={result.snippet}
-              type={"Google Search Result"}
+              type={"Google Image Search Result"}
               redirect={removeGoogleResultLink}
               />
           ))}

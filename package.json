@@ -14,7 +14,10 @@
     "@mui/material": "^5.4.4",
     "form-data": "^4.0.0",
     "formidable": "^2.0.1",
+    "google-search-results-nodejs": "^2.1.0",
+    "multer": "^1.4.4",
     "next": "latest",
+    "next-connect": "^0.12.2",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   }
