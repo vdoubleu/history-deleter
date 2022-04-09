@@ -3,7 +3,12 @@ import { Card, CardContent, CardActions, Button, Link, Typography } from '@mui/m
 export default function SearchResultCard(props) {
   const { URL, title, snippet, type, redirect, onRemove, data } = props;
 
-  //console.log(data.identifier);
+  function handleOnClick() {
+    if (onRemove) {
+      onRemove(data);
+    }
+  }
+
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
@@ -21,7 +26,7 @@ export default function SearchResultCard(props) {
         </Link>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" href={redirect} onClick={() => onRemove(data.identifier)} target="_blank">
+        <Button size="small" color="primary" href={redirect} onClick={handleOnClick} target="_blank">
           Remove
         </Button>
       </CardActions>

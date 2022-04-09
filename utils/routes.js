@@ -9,9 +9,6 @@ export async function GetGoogleResults(query, page, searchtype) {
 
   const res = await fetch(`/api/google/search?q=${query}&pageindex=${page}&${searchTypeParam}`);
 
-  const data = await res.text();
-  console.log(data);
-
   try{
     const data = await res.json();
     return data;
@@ -37,6 +34,20 @@ export async function GetArchiveResults(query, page) {
 
 export async function GetImageResults(query, page) {
   const res = await fetch(`/api/image/search?q=${query}&pageindex=${page}`);
+
+  const data = await res.json();
+  return data;
+}
+
+export async function GetRedditResults(query, page, token) {
+  const res = await fetch(`/api/reddit/search?q=${query}&pageindex=${page}&token=${token}`);
+
+  const data = await res.json();
+  return data;
+}
+
+export async function GetRedditToken(code) {
+  const res = await fetch(`/api/reddit/token?code=${code}`);
 
   const data = await res.json();
   return data;

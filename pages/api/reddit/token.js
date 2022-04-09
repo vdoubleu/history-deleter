@@ -1,5 +1,5 @@
 export default async function (req, res) {
-  const tokenURI = `${process.env.REDDIT_URI}/access_token`;
+  const tokenURI = `${process.env.REDDIT_URI}/api/v1/access_token`;
 
   const tok = process.env.REDDIT_CLIENT_ID + ':' + process.env.REDDIT_CLIENT_SECRET;
   const auth = 'Basic ' + Buffer.from(tok).toString('base64');

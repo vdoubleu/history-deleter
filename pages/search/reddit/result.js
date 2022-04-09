@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 
 import { useEffect, useState } from 'react';
-import { GetArchiveResults } from "../../../utils/routes";
+import { GetRedditResults, GetRedditToken } from "../../../utils/routes";
 
 import NavBar from '../../../components/NavBar';
 import SearchResultCard from '../../../components/SearchResultCard';
@@ -10,30 +10,32 @@ import { Box, CircularProgress, Container } from '@mui/material';
 
 export default function Search() {
   const router = useRouter();
-  const searchTarget = router.query.q;
+  const searchTarget = router.query.state;
+  const accessCode = router.query.code;
   const [searchResults, setSearchResults] = useState(null);
+  const [token, setToken] = useState(null);
 
   useEffect(async () => {
-    const res = await GetArchiveResults(searchTarget, 0);
+    if (!searchTarget) return;
+
+    const tokenRes = await GetRedditToken(accessCode);
+    console.log(tokenRes);
+
+    const res = await GetRedditResults(searchTarget, 0, tokenRes.access_token);
     setSearchResults(res);
+    setToken(tokenRes.access_token);
     console.log(res);
   }, [searchTarget]);
 
-  async function takedownArchive(data) {
-    const id = data.identifier;
-    const res = await fetch(`/api/archive/metadata?id=${id}`);
-    const json = await res.json();
-
-    console.log(json);
-    const url = "https://" + json.d1 + json.dir;
-
-    console.log(url);
-
+  function takedownReddit(item) {
+    const data = item.data;
     router.push({
-      pathname: '/search/archive/takedown',
+      pathname: '/search/reddit/takedown',
       query: {
-        url: url,
-        title: json.metadata.title
+        id: data.name,
+        title: data.title,
+        author: data.author,
+        url: data.url,
       }
     });
   }
@@ -70,12 +72,13 @@ export default function Search() {
           {searchResults.map((result, index) => (
             <SearchResultCard 
               key={index} 
+              data={result} 
+              URL={result.link}
               title={result.title}
-              snippet={result.description}
-              type={"Internet Archive Search Result"}
+              snippet={result.snippet}
+              type={"Reddit Search Result"}
+              onRemove={takedownReddit}
               redirect={null}
-              onRemove={takedownArchive}
-              data={result}
               />
           ))}
         </Box>

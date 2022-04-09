@@ -14,6 +14,7 @@ import { Container, Box, Typography, Button } from "@mui/material";
 import { useState } from 'react';
 
 const sites = ["google", "image", "archive", "twitter", "reddit", "pornhub"];
+const requireOauth = new Set(["reddit", "twitter"]);
 
 export default function Home() {
   const [openSiteSelectModal, setOpenSiteSelectModal] = useState(false);
@@ -22,12 +23,22 @@ export default function Home() {
 
   function handleSubmit(searchTarget) {
     console.log(searchTarget);
-    router.push({
-      pathname: `/search/${currSite}/result`,
-      query: {
-        q: searchTarget
-      }
-    });
+
+    if (requireOauth.has(currSite)) {
+      router.push({
+        pathname: `/api/${currSite}/auth`,
+        query: {
+          q: searchTarget
+        }
+      });
+    } else {
+      router.push({
+        pathname: `/search/${currSite}/result`,
+        query: {
+          q: searchTarget
+        }
+      });
+    }
   }
 
   function onFileUpload({target}) {
