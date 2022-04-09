@@ -52,3 +52,10 @@ export async function GetRedditToken(code) {
   const data = await res.json();
   return data;
 }
+
+export async function GetTwitterResults(query) {
+  const res = await fetch(`/api/twitter/search?q=${query}`);
+
+  const data = await res.json();
+  return data;
+}

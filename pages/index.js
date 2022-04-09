@@ -14,7 +14,7 @@ import { Container, Box, Typography, Button } from "@mui/material";
 import { useState } from 'react';
 
 const sites = ["google", "image", "archive", "twitter", "reddit", "pornhub"];
-const requireOauth = new Set(["reddit", "twitter"]);
+const requireOauth = new Set(["reddit"]);
 
 export default function Home() {
   const [openSiteSelectModal, setOpenSiteSelectModal] = useState(false);
