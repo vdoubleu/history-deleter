@@ -14,11 +14,8 @@ import { Container, Box, Typography, Button } from "@mui/material";
 import { useState } from 'react';
 
 const sites = ["google", "image", "archive", "twitter", "reddit", "pornhub"];
-// const requireOauth = new Set(["reddit"]);
 
 export default function Home() {
-  // const [openSiteSelectModal, setOpenSiteSelectModal] = useState(false);
-  // const [currSite, setCurrSite] = useState("google");
   const router = useRouter();
   const [googleOn, setGoogleOn] = useState("on");
   const [archiveOn, setArchiveOn] = useState("on");
@@ -29,14 +26,6 @@ export default function Home() {
   function handleSubmit(searchTarget) {
     console.log(searchTarget);
 
-    // if (requireOauth.has(currSite)) {
-    //   router.push({
-    //     pathname: `/api/${currSite}/auth`,
-    //     query: {
-    //       q: searchTarget
-    //     }
-    //   });
-    // } else {
     const onEngines = [
       googleOn === "on" ? "google" : null,
       archiveOn === "on" ? "archive" : null,
@@ -47,7 +36,6 @@ export default function Home() {
     const onEnginesStr = onEngines.filter(e => e !== null).join(",");
 
     router.push({
-      // pathname: `/search/${currSite}/result`,
       pathname: `search/result`,
       query: {
         q: searchTarget,
@@ -174,9 +162,6 @@ export default function Home() {
           </Box>
 
         </Container>
-
-    {/*<SiteSelectModal open={openSiteSelectModal} handleClose={() => setOpenSiteSelectModal(false)} setSite={setCurrSite} sites={sites} />*/}
-
       </main>
     </div>
   )
