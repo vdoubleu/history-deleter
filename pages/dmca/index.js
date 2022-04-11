@@ -9,7 +9,7 @@ export default function InternetArchive() {
       <NavBar />
 
       <Container>
-      <Typography sx={{m: 2}} align={"center"} variant={"h4"}> Internet Archive Takedown Process </Typography>
+      <Typography sx={{m: 5}} align={"center"} variant={"h4"}> Internet Archive Takedown Process </Typography>
 
       <Typography sx={{}} align={"left"} variant={"body1"}>
         Note: The contents of this website is not intended to constitute legal advice!
