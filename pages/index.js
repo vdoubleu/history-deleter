@@ -7,7 +7,7 @@ import SearchBar from '../components/SearchBar';
 import SiteSelectModal from '../components/SiteSelectModal';
 import FileUpload from '../components/FileUpload';
 
-import { getImageFromSite } from "../utils/utilFunc";
+import { getImageFromSite, getImageFromSiteToggleOff } from "../utils/utilFunc";
 
 import { Container, Box, Typography, Button } from "@mui/material";
 
@@ -20,6 +20,11 @@ export default function Home() {
   const [openSiteSelectModal, setOpenSiteSelectModal] = useState(false);
   const [currSite, setCurrSite] = useState("google");
   const router = useRouter();
+  const [googleOn, setGoogleOn] = useState("on");
+  const [archiveOn, setArchiveOn] = useState("on");
+  const [redditOn, setRedditOn] = useState("on");
+  const [twitterOn, setTwitterOn] = useState("on");
+  const [pornHubOn, setPornHubOn] = useState("on");
 
   function handleSubmit(searchTarget) {
     console.log(searchTarget);
@@ -71,31 +76,92 @@ export default function Home() {
 
       <main>
         <NavBar />
-
         <Container maxWidth="md">
           <Box my={4} sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
             <Typography varient="h4" sx={{ m: 1 }}>
-              Click each logo below to choose the sites you want to search/ Click to search by image
+              Click to select the sites you want to search (All sites are selected by default)
             </Typography>
-            <Button onClick={() => setOpenSiteSelectModal(true)}>
-            <Image src={getImageFromSite(currSite)} alt="logo" width={200} height={200} />
+            <Box
+                component="span"
+                m={1} //margin
+                alignItems="center"
+            >
+            { googleOn === "on" ?
+                <>
+                  <Button onClick={() => setGoogleOn("off")} >
+                    <Image src={getImageFromSite("google")} alt="logo" width={150} height={150} />
+                  </Button>
+                </>:
+                <>
+                  <Button onClick={() => setGoogleOn("on")}>
+                    <Image src={getImageFromSiteToggleOff("google")} alt="logo" width={150} height={150} />
+                  </Button>
+                </>}
+            { archiveOn === "on" ?
+                <>
+                  <Button onClick={() => setArchiveOn("off")}>
+                    <Image src={getImageFromSite("archive")} alt="logo" width={150} height={150} />
+                  </Button>
+                </>:
+                <>
+                  <Button onClick={() => setArchiveOn("on")}>
+                    <Image src={getImageFromSiteToggleOff("archive")} alt="logo" width={150} height={150} />
+                  </Button>
+                </>}
+            { redditOn === "on" ?
+                <>
+                  <Button onClick={() => setRedditOn("off")}>
+                    <Image src={getImageFromSite("reddit")} alt="logo" width={150} height={150} />
+                  </Button>
+                </>:
+                <>
+                  <Button onClick={() => setRedditOn("on")}>
+                    <Image src={getImageFromSiteToggleOff("reddit")} alt="logo" width={150} height={150} />
+                  </Button>
+                </>}
+            { twitterOn === "on" ?
+                <>
+                  <Button onClick={() => setTwitterOn("off")}>
+                    <Image src={getImageFromSite("twitter")} alt="logo" width={150} height={150} />
+                  </Button>
+                </>:
+                <>
+                  <Button onClick={() => setTwitterOn("on")}>
+                    <Image src={getImageFromSiteToggleOff("twitter")} alt="logo" width={150} height={150} />
+                  </Button>
+                </>}
+            { pornHubOn === "on" ?
+                <>
+                  <Button onClick={() => setPornHubOn("off")}>
+                    <Image src={getImageFromSite("pornhub")} alt="logo" width={150} height={150} />
+                  </Button>
+                </>:
+                <>
+                  <Button onClick={() => setPornHubOn("on")}>
+                    <Image src={getImageFromSiteToggleOff("pornhub")} alt="logo" width={150} height={150} />
+                  </Button>
+                </>}
+            </Box>
+
+            <Typography varient="h3" sx={{ m: 1 }}>
+              {'Enter Keywords/Usernames that you have previously used' }
+            </Typography>
+            {(<SearchBar OnSubmit={handleSubmit} />)}
+            <Typography varient="h3" sx={{ m: 3, fontWeight: 800 }}>
+              {'OR' }
+            </Typography>
+            <Button>
+              <Image src={getImageFromSite("image")} alt="logo" width={200} height={200} />
             </Button>
-            <Typography varient="h3" sx={{ m: 1 }}> 
-            { currSite === 'image' ?  
-              'Enter images that you would like to search for' : 
-              'Enter Keywords/Usernames that you have previously used' }
+            <FileUpload onUpload={onFileUpload} text={'Upload Image'} />
+            <Typography varient="h3" sx={{ m: 1 }}>
+              {'Enter images that you would like to search for'}
             </Typography>
-          { 
-            currSite === 'image' ? 
-            (<FileUpload onUpload={onFileUpload} text={'Upload Image'} />) : 
-            (<SearchBar OnSubmit={handleSubmit} />) 
-          }
           </Box>
-      
+
         </Container>
 
         <SiteSelectModal open={openSiteSelectModal} handleClose={() => setOpenSiteSelectModal(false)} setSite={setCurrSite} sites={sites} />
-
 
       </main>
     </div>
