@@ -10,6 +10,7 @@ import { Box, CircularProgress, Container } from '@mui/material';
 
 export default function Search() {
   const router = useRouter();
+  const removeRedditLink = "https://www.reddit.com/report";
   const searchTarget = router.query.state;
   const accessCode = router.query.code;
   const [searchResults, setSearchResults] = useState(null);
@@ -77,7 +78,7 @@ export default function Search() {
               title={result.title}
               snippet={result.snippet}
               type={"Reddit Search Result"}
-              onRemove={takedownReddit}
+              onRemove={removeRedditLink}
               redirect={null}
               />
           ))}

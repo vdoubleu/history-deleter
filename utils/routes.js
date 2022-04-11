@@ -11,7 +11,7 @@ export async function GetGoogleResults(query, page, searchtype) {
 
   try{
     const data = await res.json();
-    const removeGoogleResultLink = "https://www.google.com/webmasters/tools/legal-removal-request?complaint_type=rtbf&visit_id=0-636496126362623931-44683020&rd=1&pli=1";
+    const removeGoogleResultLink = "https://support.google.com/websearch/troubleshooter/9685456";
     const cleanedData = data.map(item => {
       return {
         url: item.link,

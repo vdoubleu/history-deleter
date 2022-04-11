@@ -12,7 +12,7 @@ export default function Search() {
   const router = useRouter();
   const searchTarget = router.query.q;
   const searchType = router.query.searchtype;
-  const removeGoogleResultLink = "https://www.google.com/webmasters/tools/legal-removal-request?complaint_type=rtbf&visit_id=0-636496126362623931-44683020&rd=1&pli=1";
+  const removeGoogleResultLink = "https://support.google.com/websearch/troubleshooter/9685456";
   const [searchResults, setSearchResults] = useState(null);
 
   useEffect(async () => {

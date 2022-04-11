@@ -40,7 +40,6 @@ export default function InternetArchive() {
         </Link>
         </Typography>
 
-        --------------------------<br></br><br></br>
         Hello,<br></br><br></br>
 
         I am &lt;your name&gt;, the owner of domain name and website &lt;your domain&gt;.<br></br><br></br>

@@ -30,11 +30,7 @@ export default function Search() {
     console.log(url);
 
     router.push({
-      pathname: '/search/archive/takedown',
-      query: {
-        url: url,
-        title: json.metadata.title
-      }
+      pathname: '/dmca',
     });
   }
 
