@@ -113,7 +113,7 @@ export async function GetRedditResults(query, page, token, redditOnRemove) {
     const data = await res.json();
 
     const cleanedData = data.map(item => {
-      const text = item.data.selftext ? ` - ${item.data.selftext}`.slice(0, 90) : item.data.url;
+      const text = item.data.selftext ? ` - ${item.data.selftext}`.slice(0, 90) : `- ${item.data.url}`;
       return {
         url: "https://www.reddit.com" + item.data.permalink,
         title: item.data.title,
