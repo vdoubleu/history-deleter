@@ -1,4 +1,5 @@
 import { Typography, Container } from "@mui/material";
+import Link from '@mui/material/Link';
 
 import NavBar from '../../components/NavBar';
 
@@ -21,9 +22,18 @@ export default function InternetArchive() {
         your information. To prove domain ownership, you will need to find an old invoice / receipt 
         from your domain host proving ownership. Here are two sites that provide DMCA notice generators:<br></br><br></br>
 
-        https://www.shift4shop.com/business-tools/dmca-generator.html<br></br><br></br>
+        <Typography sx={{}} align={"left"} variant={"body1"}>
+        <Link href="https://www.shift4shop.com/business-tools/dmca-generator.html" underline="none">
+          {'DMCA Notice Generator'}
+        </Link>
+        </Typography>
 
-        https://iphqs.com/dmca-takedown-notice-generator/<br></br><br></br>
+        <Typography sx={{}} align={"left"} variant={"body1"}>
+        <Link href="https://iphqs.com/dmca-takedown-notice-generator" underline="none">
+          {'DMCA Takedown Notice Generator'}
+        </Link>
+        </Typography>
+
         --------------------------<br></br><br></br>
         Hello,<br></br><br></br>
 
