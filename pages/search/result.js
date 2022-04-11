@@ -41,10 +41,10 @@ export default function Search() {
       allResults.push(GetArchiveResults(searchTarget, 0, takedownArchive));
     }
     if (engines.includes("reddit")) {
-      allResults.push(GetRedditResults(searchTarget, 0, "", takedownReddit));
+      allResults.push(GetRedditResults(searchTarget, 0, "", 0));
     }
     if (engines.includes("twitter")) {
-      allResults.push(GetTwitterResults(searchTarget, takedownTwitter));
+      allResults.push(GetTwitterResults(searchTarget, 0));
     }
 
     const results = await Promise.all(allResults);
@@ -58,33 +58,10 @@ export default function Search() {
   }, [searchTarget]);
 
   async function takedownArchive() {
-    // const id = data.identifier;
-    // const res = await fetch(`/api/archive/metadata?id=${id}`);
-    // const json = await res.json();
-
-    // console.log(json);
-    // const url = "https://" + json.d1 + json.dir;
-
-    // console.log(url);
-
     router.push({
-      pathname: '/search/archive/takedown',
+      pathname: '/dmca',
       query: {
-        // url: url,
-        // title: json.metadata.title
       }
-    });
-  }
-
-  async function takedownReddit() {
-    router.push({
-      pathname: '/search/reddit/takedown',
-    });
-  }
-
-  async function takedownTwitter() {
-    router.push({
-      pathname: '/search/twitter/takedown',
     });
   }
 

@@ -105,7 +105,7 @@ export async function GetImageResults(query, page) {
 
 export async function GetRedditResults(query, page, token, redditOnRemove) {
   const res = await fetch(`/api/reddit/search?q=${query}&pageindex=${page}&token=${token}`);
-
+  const removeRedditLink = "https://www.reddit.com/report";
   try {
     const data = await res.json();
 
@@ -116,8 +116,8 @@ export async function GetRedditResults(query, page, token, redditOnRemove) {
         title: item.data.title,
         snippet: `${item.data.author}` + text,
         type: "Reddit Search Result",
-        redirect: null,
-        onRemove: redditOnRemove
+        redirect: removeRedditLink,
+        onRemove: null
       }
     });
 
@@ -137,7 +137,7 @@ export async function GetRedditToken(code) {
 
 export async function GetTwitterResults(query, tweetOnRemove) {
   const res = await fetch(`/api/twitter/search?q=${query}`);
-
+  const removeTwitterLink = "https://help.twitter.com/en/forms/safety-and-sensitive-content";
   try {
     const data = await res.json();
     const cleanedData = data.map(item => {
@@ -146,8 +146,8 @@ export async function GetTwitterResults(query, tweetOnRemove) {
         title: null,
         snippet: item.text,
         type: "Twitter Search Result",
-        redirect: null,
-        onRemove: tweetOnRemove
+        redirect: removeTwitterLink,
+        onRemove: null
       }
     });
 
