@@ -74,9 +74,12 @@ export default function Home() {
 
         <Container maxWidth="md">
           <Box my={4} sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-          <Button onClick={() => setOpenSiteSelectModal(true)}> 
-            <Image src={getImageFromSite(currSite)} alt="logo" width={200} height={200} /> 
-          </Button>
+            <Typography varient="h4" sx={{ m: 1 }}>
+              Click each logo below to choose the sites you want to search/ Click to search by image
+            </Typography>
+            <Button onClick={() => setOpenSiteSelectModal(true)}>
+            <Image src={getImageFromSite(currSite)} alt="logo" width={200} height={200} />
+            </Button>
             <Typography varient="h3" sx={{ m: 1 }}> 
             { currSite === 'image' ?  
               'Enter images that you would like to search for' : 
