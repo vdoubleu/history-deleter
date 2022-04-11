@@ -9,9 +9,6 @@ export default async function (req, res) {
   const searchRes = await fetch(`${process.env.REDDIT_URI}/r/all/search.json?q=${query}&sort=relevance&t=all&limit=100&page=${page}`);
   const searchResComment = await fetch(`${process.env.REDDIT_NEW_URI}/reddit/search/comment/?q=${query}`);
   const searchAuthorComment = await fetch(`${process.env.REDDIT_NEW_URI}/reddit/search/comment/?author=${query}&sort=asc&size=100`);
-  console.log(`${process.env.REDDIT_NEW_URI}/reddit/search/comment/?q=${query}`);
-  console.log(`${process.env.REDDIT_NEW_URI}/reddit/search/comment/?author=${query}&sort=asc&size=100`);
-
   const searchResJson = await searchRes.json();
   const searchCommentResJson = await searchResComment.json();
   const searchAuthorCommentJSON = await searchAuthorComment.json();
@@ -38,9 +35,6 @@ export default async function (req, res) {
     }
   });
 
-  console.log(searchResJson.data.children + searchCommentResJson.data + searchAuthorCommentJSON.data);
-
-  const obj = JSON.stringify(searchResJson.data.children + searchCommentResJson.data + searchAuthorCommentJSON.data);
-  console.log(obj);
-  res.json();
+  const addedList = searchCommentResJson.data.concat(searchAuthorCommentJSON.data);
+  res.json(searchResJson.data.children.concat(addedList));
 }
