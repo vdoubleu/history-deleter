@@ -37,6 +37,6 @@ export default async function (req, res) {
 
   const addedList = searchCommentResJson.data.concat(searchAuthorCommentJSON.data);
   const allOutput = searchResJson.data.children.concat(addedList);
-  console.log(allOutput);
+  // console.log(allOutput);
   res.json(allOutput);
 }

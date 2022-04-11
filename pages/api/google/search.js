@@ -22,6 +22,8 @@ export default async function handler(req, res) {
     const googleResRaw = await fetch(`${CSE_URL}?key=${CSE_KEY}&cx=${CSE_CX}&q=${req.query.q}&num=10&start=${startIndex}&${searchType}`);
     const googleResJson = await googleResRaw.json();
 
+    console.log(googleResJson);
+
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(googleResJson.items);
   } catch (err) {

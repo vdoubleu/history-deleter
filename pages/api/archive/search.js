@@ -8,8 +8,8 @@ export default async function (req, res) {
   const searchUri = `https://archive.org/advancedsearch.php?q=${req.query.q}&output=json&fl=${commaSeperate}&page=${startPage}&rows=50`;
 
   const response = await fetch(searchUri);
-  const json = await response.json();
-  const data = json.response.docs;
+  const respjson = await response.json();
 
+  const data = respjson.response.docs;
   res.json(data);
 }

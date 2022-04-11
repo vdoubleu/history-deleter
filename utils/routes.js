@@ -74,12 +74,11 @@ export async function GetArchiveResults(query, page, archiveRemove) {
   try {
     const data = await res.json();
 
-    const snippet = (item.description && item.description.length > MAXLENGTH)? item.description.slice(0,MAXLENGTH)+"...": item.description
     const cleanedData = data.map(item => {
       return {
         url: null,
         title: item.title,
-        snippet: snippet,
+        snippet: (item.description && item.description.length > MAXLENGTH) ? item.description.slice(0,MAXLENGTH)+"...": item.description,
         type: "Internet Archive Search Result",
         redirect: null,
         onRemove: archiveRemove
@@ -113,7 +112,7 @@ export async function GetRedditResults(query, page, token, redditOnRemove) {
     const data = await res.json();
 
     const cleanedData = data.map(item => {
-      const text = item.data.selftext ? ` - ${item.data.selftext}`.slice(0, 90) : `- ${item.data.url}`;
+      const text = item.data.selftext ? ` - ${item.data.selftext}`.slice(0, MAXLENGTH) : `- ${item.data.url}`;
       return {
         url: "https://www.reddit.com" + item.data.permalink,
         title: item.data.title,
