@@ -12,3 +12,7 @@ export function getUrlBase(url) {
 export function getImageFromSite(site) {
   return `/images/${site}-logo.png`;
 }
+
+export function getImageFromSiteToggleOff(site) {
+  return `/images/${site}-black-and-white.png`;
+}
