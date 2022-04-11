@@ -36,5 +36,7 @@ export default async function (req, res) {
   });
 
   const addedList = searchCommentResJson.data.concat(searchAuthorCommentJSON.data);
-  res.json(searchResJson.data.children.concat(addedList));
+  const allOutput = searchResJson.data.children.concat(addedList);
+  console.log(allOutput);
+  res.json(allOutput);
 }
