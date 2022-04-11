@@ -1,3 +1,5 @@
+const MAXLENGTH = 200;
+
 /**
  * gets google search results
  * @param {string} query - search query
@@ -72,11 +74,12 @@ export async function GetArchiveResults(query, page, archiveRemove) {
   try {
     const data = await res.json();
 
+    const snippet = (item.description && item.description.length > MAXLENGTH)? item.description.slice(0,MAXLENGTH)+"...": item.description
     const cleanedData = data.map(item => {
       return {
         url: null,
         title: item.title,
-        snippet: item.description,
+        snippet: snippet,
         type: "Internet Archive Search Result",
         redirect: null,
         onRemove: archiveRemove
