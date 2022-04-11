@@ -1,5 +1,4 @@
 import { AppBar, Box, Toolbar, Typography, Container, IconButton, Button } from '@mui/material';
-import Home from "@mui/icons-material/Home";
 
 import Link from 'next/link';
 
@@ -20,7 +19,7 @@ function NavBar() {
             component="div"
             sx={{ display: 'flex' }}
           >
-            LOGO
+            History Deleter
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: 'flex' }}>
