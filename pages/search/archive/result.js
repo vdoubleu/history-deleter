@@ -61,10 +61,10 @@ export default function Search() {
       </div>
     );
   }
+  
   return (
     <div> 
       <NavBar />
-
       <Container>
         <Box sx={{mt: 5}}>
           {searchResults.map((result, index) => (

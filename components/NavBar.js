@@ -7,6 +7,7 @@ function NavBar() {
   const pages = { 
     'Home': '/',
     'About': '/about',
+    'Internet Archive': '/dmca',
   };
 
   return (
