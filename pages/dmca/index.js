@@ -10,13 +10,17 @@ export default function InternetArchive() {
 
       <Container>
       <Typography sx={{m: 2}} align={"center"} variant={"h4"}> Internet Archive Takedown Process </Typography>
-      
+
       <Typography sx={{}} align={"left"} variant={"body1"}>
-        Note: The contents of this website is not intended to constitute legal advice! 
+        Note: The contents of this website is not intended to constitute legal advice!
         Consult a lawyer for any serious legal problems. <br></br><br></br>
 
         If you wish to delete the links to your website or domain that has been archived by the Internet Archive, you need to
-        send an email to info@archive.org to request a takedown. <br></br><br></br>
+        send an email to
+        <Link href="info@archive.org" underline="none">
+          {' info@archive.org '}
+        </Link>
+        to request a takedown. <br></br><br></br>
 
         Here is an email template you can use for reference. Replace the dummy words in &lt; &gt; with 
         your information. To prove domain ownership, you will need to find an old invoice / receipt 
