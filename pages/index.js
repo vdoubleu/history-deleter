@@ -14,11 +14,8 @@ import { Container, Box, Typography, Button } from "@mui/material";
 import { useState } from 'react';
 
 const sites = ["google", "image", "archive", "twitter", "reddit", "pornhub"];
-// const requireOauth = new Set(["reddit"]);
 
 export default function Home() {
-  // const [openSiteSelectModal, setOpenSiteSelectModal] = useState(false);
-  // const [currSite, setCurrSite] = useState("google");
   const router = useRouter();
   const [googleOn, setGoogleOn] = useState("on");
   const [archiveOn, setArchiveOn] = useState("on");
@@ -29,14 +26,6 @@ export default function Home() {
   function handleSubmit(searchTarget) {
     console.log(searchTarget);
 
-    // if (requireOauth.has(currSite)) {
-    //   router.push({
-    //     pathname: `/api/${currSite}/auth`,
-    //     query: {
-    //       q: searchTarget
-    //     }
-    //   });
-    // } else {
     const onEngines = [
       googleOn === "on" ? "google" : null,
       archiveOn === "on" ? "archive" : null,
@@ -47,7 +36,6 @@ export default function Home() {
     const onEnginesStr = onEngines.filter(e => e !== null).join(",");
 
     router.push({
-      // pathname: `/search/${currSite}/result`,
       pathname: `search/result`,
       query: {
         q: searchTarget,
@@ -101,56 +89,56 @@ export default function Home() {
             { googleOn === "on" ?
                 <>
                   <Button onClick={() => setGoogleOn("off")} >
-                    <Image src={getImageFromSite("google")} alt="logo" width={150} height={150} />
+                    <Image src={getImageFromSite("google")} alt="logo" width={50} height={50} />
                   </Button>
                 </>:
                 <>
                   <Button onClick={() => setGoogleOn("on")}>
-                    <Image src={getImageFromSiteToggleOff("google")} alt="logo" width={150} height={150} />
+                    <Image src={getImageFromSiteToggleOff("google")} alt="logo" width={50} height={50} />
                   </Button>
                 </>}
             { archiveOn === "on" ?
                 <>
                   <Button onClick={() => setArchiveOn("off")}>
-                    <Image src={getImageFromSite("archive")} alt="logo" width={150} height={150} />
+                    <Image src={getImageFromSite("archive")} alt="logo" width={50} height={50} />
                   </Button>
                 </>:
                 <>
                   <Button onClick={() => setArchiveOn("on")}>
-                    <Image src={getImageFromSiteToggleOff("archive")} alt="logo" width={150} height={150} />
+                    <Image src={getImageFromSiteToggleOff("archive")} alt="logo" width={50} height={50} />
                   </Button>
                 </>}
             { redditOn === "on" ?
                 <>
                   <Button onClick={() => setRedditOn("off")}>
-                    <Image src={getImageFromSite("reddit")} alt="logo" width={150} height={150} />
+                    <Image src={getImageFromSite("reddit")} alt="logo" width={50} height={50} />
                   </Button>
                 </>:
                 <>
                   <Button onClick={() => setRedditOn("on")}>
-                    <Image src={getImageFromSiteToggleOff("reddit")} alt="logo" width={150} height={150} />
+                    <Image src={getImageFromSiteToggleOff("reddit")} alt="logo" width={50} height={50} />
                   </Button>
                 </>}
             { twitterOn === "on" ?
                 <>
                   <Button onClick={() => setTwitterOn("off")}>
-                    <Image src={getImageFromSite("twitter")} alt="logo" width={150} height={150} />
+                    <Image src={getImageFromSite("twitter")} alt="logo" width={50} height={50} />
                   </Button>
                 </>:
                 <>
                   <Button onClick={() => setTwitterOn("on")}>
-                    <Image src={getImageFromSiteToggleOff("twitter")} alt="logo" width={150} height={150} />
+                    <Image src={getImageFromSiteToggleOff("twitter")} alt="logo" width={50} height={50} />
                   </Button>
                 </>}
             { pornHubOn === "on" ?
                 <>
                   <Button onClick={() => setPornHubOn("off")}>
-                    <Image src={getImageFromSite("pornhub")} alt="logo" width={150} height={150} />
+                    <Image src={getImageFromSite("pornhub")} alt="logo" width={50} height={50} />
                   </Button>
                 </>:
                 <>
                   <Button onClick={() => setPornHubOn("on")}>
-                    <Image src={getImageFromSiteToggleOff("pornhub")} alt="logo" width={150} height={150} />
+                    <Image src={getImageFromSiteToggleOff("pornhub")} alt="logo" width={50} height={50} />
                   </Button>
                 </>}
             </Box>
@@ -165,7 +153,7 @@ export default function Home() {
               {'OR' }
             </Typography>
             <Button>
-              <Image src={getImageFromSite("image")} alt="logo" width={200} height={200} />
+              <Image src={getImageFromSite("image")} alt="logo" width={150} height={150} />
             </Button>
             <FileUpload onUpload={onFileUpload} text={'Upload Image'} />
             <Typography varient="h3" sx={{ m: 1 }}>
@@ -174,9 +162,6 @@ export default function Home() {
           </Box>
 
         </Container>
-
-    {/*<SiteSelectModal open={openSiteSelectModal} handleClose={() => setOpenSiteSelectModal(false)} setSite={setCurrSite} sites={sites} />*/}
-
       </main>
     </div>
   )
