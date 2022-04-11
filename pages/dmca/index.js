@@ -11,10 +11,12 @@ export default function InternetArchive() {
       <Container>
       <Typography sx={{m: 5}} align={"center"} variant={"h4"}> Internet Archive Takedown Process </Typography>
 
-      <Typography sx={{}} align={"left"} variant={"body1"}>
+      <Typography sx={{m: 2, fontWeight: 600 }} align={"left"} variant={"body1"}>
         Note: The contents of this website is not intended to constitute legal advice!
-        Consult a lawyer for any serious legal problems. <br></br><br></br>
+        Consult a lawyer for any serious legal problems. <br></br>
+      </Typography>
 
+        <Typography sx={{m: 2}} align={"left"} variant={"body1"}>
         If you wish to delete the links to your website or domain that has been archived by the Internet Archive, you need to
         send an email to
         <Link href="info@archive.org" underline="none">
