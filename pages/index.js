@@ -14,11 +14,11 @@ import { Container, Box, Typography, Button } from "@mui/material";
 import { useState } from 'react';
 
 const sites = ["google", "image", "archive", "twitter", "reddit", "pornhub"];
-const requireOauth = new Set(["reddit"]);
+// const requireOauth = new Set(["reddit"]);
 
 export default function Home() {
-  const [openSiteSelectModal, setOpenSiteSelectModal] = useState(false);
-  const [currSite, setCurrSite] = useState("google");
+  // const [openSiteSelectModal, setOpenSiteSelectModal] = useState(false);
+  // const [currSite, setCurrSite] = useState("google");
   const router = useRouter();
   const [googleOn, setGoogleOn] = useState("on");
   const [archiveOn, setArchiveOn] = useState("on");
@@ -29,21 +29,32 @@ export default function Home() {
   function handleSubmit(searchTarget) {
     console.log(searchTarget);
 
-    if (requireOauth.has(currSite)) {
-      router.push({
-        pathname: `/api/${currSite}/auth`,
-        query: {
-          q: searchTarget
-        }
-      });
-    } else {
-      router.push({
-        pathname: `/search/${currSite}/result`,
-        query: {
-          q: searchTarget
-        }
-      });
-    }
+    // if (requireOauth.has(currSite)) {
+    //   router.push({
+    //     pathname: `/api/${currSite}/auth`,
+    //     query: {
+    //       q: searchTarget
+    //     }
+    //   });
+    // } else {
+    const onEngines = [
+      googleOn === "on" ? "google" : null,
+      archiveOn === "on" ? "archive" : null,
+      redditOn === "on" ? "reddit" : null,
+      twitterOn === "on" ? "twitter" : null,
+      pornHubOn === "on" ? "pornhub" : null
+    ];
+    const onEnginesStr = onEngines.filter(e => e !== null).join(",");
+
+    router.push({
+      // pathname: `/search/${currSite}/result`,
+      pathname: `search/result`,
+      query: {
+        q: searchTarget,
+        engines: onEnginesStr
+      }
+    });
+    // }
   }
 
   function onFileUpload({target}) {
@@ -58,7 +69,8 @@ export default function Home() {
     .then(res => {
       console.log(res.fileurl);
       router.push({
-        pathname: `/search/${currSite}/result`,
+        // pathname: `/search/${currSite}/result`,
+        pathname: `/search/image/result`,
         query: {
           q: res.fileurl,
           searchtype: 'image'
@@ -146,7 +158,9 @@ export default function Home() {
             <Typography varient="h3" sx={{ m: 1 }}>
               {'Enter Keywords/Usernames that you have previously used' }
             </Typography>
-            {(<SearchBar OnSubmit={handleSubmit} />)}
+
+            <SearchBar OnSubmit={handleSubmit} />
+
             <Typography varient="h3" sx={{ m: 3, fontWeight: 800 }}>
               {'OR' }
             </Typography>
@@ -161,7 +175,7 @@ export default function Home() {
 
         </Container>
 
-        <SiteSelectModal open={openSiteSelectModal} handleClose={() => setOpenSiteSelectModal(false)} setSite={setCurrSite} sites={sites} />
+    {/*<SiteSelectModal open={openSiteSelectModal} handleClose={() => setOpenSiteSelectModal(false)} setSite={setCurrSite} sites={sites} />*/}
 
       </main>
     </div>

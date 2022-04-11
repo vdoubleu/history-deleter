@@ -1,11 +1,19 @@
 import { Card, CardContent, CardActions, Button, Link, Typography } from '@mui/material';
 
 export default function SearchResultCard(props) {
-  const { URL, title, snippet, type, redirect, onRemove, data } = props;
+  /**
+   * URL: the url of the result
+   * title: the title of the result
+   * snippet: a short snippet of the content of the result
+   * type: description of the source of the result
+   * redirect: redirects to url (one o fthis or onRemove should be set to null)
+   * onRemove: removes the result from the list
+   */
+  const { URL, title, snippet, type, redirect, onRemove } = props;
 
   function handleOnClick() {
     if (onRemove) {
-      onRemove(data);
+      onRemove();
     }
   }
 
