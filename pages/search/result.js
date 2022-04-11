@@ -41,7 +41,7 @@ export default function Search() {
       allResults.push(GetArchiveResults(searchTarget, 0, takedownArchive));
     }
     if (engines.includes("reddit")) {
-      allResults.push(GetRedditResults(searchTarget, 0, takedownReddit));
+      allResults.push(GetRedditResults(searchTarget, 0, "", takedownReddit));
     }
     if (engines.includes("twitter")) {
       allResults.push(GetTwitterResults(searchTarget, takedownTwitter));
