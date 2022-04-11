@@ -1,3 +1,5 @@
+const MAXLENGTH = 200;
+
 /**
  * gets google search results
  * @param {string} query - search query
@@ -11,7 +13,7 @@ export async function GetGoogleResults(query, page, searchtype) {
 
   try{
     const data = await res.json();
-    const removeGoogleResultLink = "https://www.google.com/webmasters/tools/legal-removal-request?complaint_type=rtbf&visit_id=0-636496126362623931-44683020&rd=1&pli=1";
+    const removeGoogleResultLink = "https://support.google.com/websearch/troubleshooter/9685456";
     const cleanedData = data.map(item => {
       return {
         url: item.link,
@@ -72,11 +74,12 @@ export async function GetArchiveResults(query, page, archiveRemove) {
   try {
     const data = await res.json();
 
+    const snippet = (item.description && item.description.length > MAXLENGTH)? item.description.slice(0,MAXLENGTH)+"...": item.description
     const cleanedData = data.map(item => {
       return {
         url: null,
         title: item.title,
-        snippet: item.description,
+        snippet: snippet,
         type: "Internet Archive Search Result",
         redirect: null,
         onRemove: archiveRemove
@@ -105,21 +108,19 @@ export async function GetImageResults(query, page) {
 
 export async function GetRedditResults(query, page, token, redditOnRemove) {
   const res = await fetch(`/api/reddit/search?q=${query}&pageindex=${page}&token=${token}`);
-
+  const removeRedditLink = "https://www.reddit.com/report";
   try {
     const data = await res.json();
 
     const cleanedData = data.map(item => {
-      console.log("hellohhhh");
-      console.log(item);
-      const text = item.data.selftext ? ` - ${item.data.selftext}`.slice(0, 90) : item.data.url;
+      const text = item.data.selftext ? ` - ${item.data.selftext}`.slice(0, 90) : `- ${item.data.url}`;
       return {
         url: "https://www.reddit.com" + item.data.permalink,
         title: item.data.title,
         snippet: `${item.data.author}` + text,
         type: "Reddit Search Result",
-        redirect: null,
-        onRemove: redditOnRemove
+        redirect: removeRedditLink,
+        onRemove: null
       }
     });
 
@@ -139,7 +140,7 @@ export async function GetRedditToken(code) {
 
 export async function GetTwitterResults(query, tweetOnRemove) {
   const res = await fetch(`/api/twitter/search?q=${query}`);
-
+  const removeTwitterLink = "https://help.twitter.com/en/forms/safety-and-sensitive-content";
   try {
     const data = await res.json();
     const cleanedData = data.map(item => {
@@ -148,8 +149,8 @@ export async function GetTwitterResults(query, tweetOnRemove) {
         title: null,
         snippet: item.text,
         type: "Twitter Search Result",
-        redirect: null,
-        onRemove: tweetOnRemove
+        redirect: removeTwitterLink,
+        onRemove: null
       }
     });
 

@@ -7,6 +7,7 @@ function NavBar() {
     'Home': '/',
     'About': '/about',
     'Internet Archive': '/dmca',
+    'Google': '/google',
   };
 
   return (

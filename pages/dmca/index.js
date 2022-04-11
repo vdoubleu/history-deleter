@@ -24,8 +24,39 @@ export default function InternetArchive() {
         </Link>
         to request a takedown. <br></br><br></br>
 
-        Here is an email template you can use for reference. Replace the dummy words in &lt; &gt; with 
-        your information. To prove domain ownership, you will need to find an old invoice / receipt 
+        Here is an email template you can use for reference. Replace the dummy words in <b>&lt; </b>&gt; with 
+        your information. <br></br>
+        <hr></hr><br></br>
+
+        Hello,<br></br><br></br>
+
+        I am <b>&lt;your name</b>&gt;, the owner of domain name and website <b>&lt;your domain</b>&gt;.<br></br><br></br>
+
+        I request you to remove the following links from your website:<br></br><br></br>
+        
+        <b>&lt;the internet archive links of your website</b>&gt;<br></br><br></br>
+
+        My Address:<br></br><br></br>
+        <b>&lt;your mailing address</b>&gt;<br></br><br></br>
+
+        Phone No:<br></br><br></br>
+        <b>&lt;your phone number</b>&gt;<br></br><br></br>
+
+        Email Address :<br></br><br></br>
+        <b>&lt;your email address, ideally from the same domain</b>&gt;<br></br><br></br>
+
+        I have a good-faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law.<br></br><br></br>
+
+        The above information in this notice is accurate, and under penalty of perjury, I am the owner of the copyright interest involved. 
+        Attached is formal DMCA notice as well as evidence that I am the owner of <b>&lt;your domain</b>&gt;.
+        <br></br><br></br>
+        Kind regards,
+        <br></br><br></br>
+        <b>&lt;your name</b>&gt;
+        <br></br>
+        <hr></hr><br></br>
+
+        To prove domain ownership, you will need to find an old invoice / receipt 
         from your domain host proving ownership. Here are two sites that provide DMCA notice generators:<br></br><br></br>
 
         <Typography sx={{}} align={"left"} variant={"body1"}>
@@ -38,34 +69,9 @@ export default function InternetArchive() {
         <Link href="https://iphqs.com/dmca-takedown-notice-generator" underline="none">
           {'DMCA Takedown Notice Generator'}
         </Link>
+        <br></br>
+        <br></br>
         </Typography>
-
-        --------------------------<br></br><br></br>
-        Hello,<br></br><br></br>
-
-        I am &lt;your name&gt;, the owner of domain name and website &lt;your domain&gt;.<br></br><br></br>
-
-        I request you to remove the following links from your website:<br></br><br></br>
-        
-        &lt;the internet archive links of your website&gt;<br></br><br></br>
-
-        My Address:<br></br><br></br>
-        &lt;your mailing address&gt;<br></br><br></br>
-
-        Phone No:<br></br><br></br>
-        &lt;your phone number&gt;<br></br><br></br>
-
-        Email Address :<br></br><br></br>
-        &lt;your email address, ideally from the same domain&gt;<br></br><br></br>
-
-        I have a good-faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law.<br></br><br></br>
-
-        The above information in this notice is accurate, and under penalty of perjury, I am the owner of the copyright interest involved. 
-        Attached is formal DMCA notice as well as evidence that I am the owner of &lt;your domain&gt;.
-        <br></br><br></br>
-        Kind regards,
-        <br></br><br></br>
-        &lt;your name&gt;
       </Typography>
       </Container>
     </div>
