@@ -6,12 +6,41 @@ export default async function (req, res) {
   console.log(query, token);
 
   // TODO: search through reddit for posts matching query
-  const searchRes = await fetch(`${process.env.REDDIT_URI}/r/all/search.json?q=${query}&sort=relevance&t=all&limit=100&page=${page}`, {
-    // headers: {
-    //   Authorization: `bearer ${token}`,
-    // },
-  });
-  const searchResJson = await searchRes.json();
+  const searchRes = await fetch(`${process.env.REDDIT_URI}/r/all/search.json?q=${query}&sort=relevance&t=all&limit=100&page=${page}`);
+  const searchResComment = await fetch(`${process.env.REDDIT_NEW_URI}/reddit/search/comment/?q=${query}`);
+  const searchAuthorComment = await fetch(`${process.env.REDDIT_NEW_URI}/reddit/search/comment/?author=${query}&sort=asc&size=100`);
+  console.log(`${process.env.REDDIT_NEW_URI}/reddit/search/comment/?q=${query}`);
+  console.log(`${process.env.REDDIT_NEW_URI}/reddit/search/comment/?author=${query}&sort=asc&size=100`);
 
-  res.json(searchResJson.data.children);
+  const searchResJson = await searchRes.json();
+  const searchCommentResJson = await searchResComment.json();
+  const searchAuthorCommentJSON = await searchAuthorComment.json();
+
+  searchCommentResJson.data = searchAuthorCommentJSON.data.map(item => {
+    return  {
+      data: {
+        selftext: item.body,
+        title: "",
+        author: item.author,
+        permalink: ""
+      }
+    }
+  });
+
+  searchAuthorCommentJSON.data = searchAuthorCommentJSON.data.map(item => {
+    return {
+      data: {
+        selftext: item.body,
+        title: "",
+        author: item.author,
+        permalink: ""
+      }
+    }
+  });
+
+  console.log(searchResJson.data.children + searchCommentResJson.data + searchAuthorCommentJSON.data);
+
+  const obj = JSON.stringify(searchResJson.data.children + searchCommentResJson.data + searchAuthorCommentJSON.data);
+  console.log(obj);
+  res.json();
 }
