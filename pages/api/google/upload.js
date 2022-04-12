@@ -9,8 +9,6 @@ export const config = {
 };
 
 export default async function handler(req, res) {
-  // form.uploadDir = "./";
-  // form.keepExtensions = true;
   const formFields = await new Promise((resolve, reject) => {
     const form = new formidable.IncomingForm();
     form.parse(req, (err, fields, files) => {

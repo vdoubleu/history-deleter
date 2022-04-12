@@ -6,8 +6,9 @@ function NavBar() {
   const pages = { 
     'Home': '/',
     'About': '/about',
-    'Internet Archive': '/dmca',
-    'Google': '/google',
+    'Resources': '/resources',
+    // 'Internet Archive': '/dmca',
+    // 'Google': '/google',
   };
 
   return (
